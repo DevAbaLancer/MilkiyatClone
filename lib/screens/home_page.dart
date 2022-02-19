@@ -35,12 +35,38 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+
     final textThemeCustom = Theme.of(context).textTheme;
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
@@ -53,10 +79,7 @@ class _HomePageState extends State<HomePage> {
         //     fit: BoxFit.fill,
         //   ),
         // ),
-        leading: const Icon(
-          Icons.menu,
-          color: Colors.white,
-        ),
+
         actions: [
           Row(
             children: [
